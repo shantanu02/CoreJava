@@ -1,0 +1,275 @@
+Q44===================================================
+
+
+import java.util.Scanner;
+
+class Faculty{
+	private int id;
+	private double salary;
+	
+	void input(int id) {
+		this.id = id ;
+		salary = 0 ; 
+		
+	}
+	
+	void print() {
+		System.out.println("Id : "+id);
+		System.out.println("Salary is : " + salary);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+	
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	
+	
+	
+	
+	
+}
+
+class FullTimeFaculty extends Faculty{
+	private double basic;
+	private double allowance;
+	
+	void input(int id , double basic , double allowance ) {
+		input(id);
+		this.basic = basic ;
+		this.allowance = allowance;
+		setSalary(basic + allowance);
+		
+	}
+
+	
+}
+
+class PartTimeFaculty extends Faculty{
+	private double hrs;
+	private double rate;
+	
+	void input(int id , double hrs , double rate) {
+		input(id);
+		this.hrs = hrs;
+		this.rate = rate;
+		setSalary(hrs * rate);
+	}
+	
+}
+
+
+public class Ques44 {
+
+	public static void main(String[] args) {
+		FullTimeFaculty f = new FullTimeFaculty();
+		f.input(101, 1200 ,20);
+		f.print();
+		
+		PartTimeFaculty p = new PartTimeFaculty();
+		p.input(100,5,4000);
+		p.print();
+	}
+
+}
+
+
+Q45==================================================================
+
+import java.util.Scanner;
+
+class Student{
+	private int rno ; 
+	private double percent ;
+	
+	Student(){
+		this.rno = 0 ;
+		this.percent = 0 ; 
+	}
+	
+	Student(int rno , double percent){
+		this.rno = rno;
+		this.percent = percent;
+	}
+	
+	void show() {
+		System.out.println("Roll no : " +rno);
+		System.out.println("Percentage : "+percent);
+	}
+
+	public int getRno() {
+		return rno;
+	}
+
+	public double getPercent() {
+		return percent;
+	}
+	
+	
+	
+}
+
+class ColStudent extends Student {
+	private int sem;
+	
+	ColStudent(){
+		super();
+		this.sem = 0 ; 
+	}
+	
+	ColStudent(int rno , double percent , int sem){
+		super(rno , percent);
+		this.sem = sem;
+	}
+	
+	void show() {
+		super.show();
+		System.out.println("Semeseter : "+sem);
+	}
+
+	public int getSem() {
+		return sem;
+	}
+	
+	
+	
+	
+}
+
+class ScStudent extends Student{
+	private String cname;
+	
+	ScStudent(){
+		super();
+		this.cname = null;
+	}
+	
+	ScStudent(int rno , double percent , String cname ){
+		super(rno , percent );
+		this.cname = cname ; 
+	}
+	
+	void show() {
+		super.show();
+		System.out.println("Class : "+cname);
+	}
+
+	public String getCname() {
+		return cname;
+	}
+	
+	
+	
+}
+
+
+
+public class Ques45 {
+
+	public static void main(String[] args) {
+		Student s[] = {
+				new ColStudent(101 , 56.7 , 4),
+				new ColStudent(105,65.8,5),
+				new ScStudent(100 , 78.3 , "11th"),
+				new ScStudent(122,45.7,"12th"),
+				new ScStudent(123,89.2,"10th")
+		};
+		
+		for(Student i : s) {
+			i.show();
+		}
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter roll no : ");
+		int r = sc.nextInt();
+
+		for(Student i : s) {
+			if(i.getRno() == r) {
+				System.out.println(r+" is Present");
+			}
+			
+			if(i.getPercent() >= 75) {
+				System.out.println(i.getRno()+" has A grade ");
+			}
+		}
+
+	}
+
+}
+
+Q46===============================================================================
+
+
+class Y
+{
+	private int val;
+
+	public int getVal() {
+		return val;
+	}
+
+	public void setVal(int val) {
+		this.val = val;
+	}
+
+	public Y() {
+		this.val = val;
+	}
+}
+public class Ques46 {
+
+	public static void main(String arr[])
+	{
+		Y a1 = new Y();
+		System.out.println((a1 instanceof Y));
+	}
+}
+
+Q47=================================================================================
+
+public class Ques47 {
+	  
+    public String empName;
+    public int empSalary;
+    public String address;
+
+    public Ques47()
+    {
+        this("vipul");
+    }
+    public Ques47(String name)
+    {
+    	this(name, 120035);
+    }
+    public Ques47(String name, int sal)
+    {
+    	this(name, sal, "pune");
+    }
+    public Ques47(String name, int sal, String addr)
+    {
+    	this.empName=name;
+    	this.empSalary=sal;
+    }
+
+    void disp() {
+    	System.out.println(empName);
+    	System.out.println(empSalary);
+    	System.out.println(address);
+    }
+    public static void main(String[] args)
+    {
+    	Ques47 a1 = new Ques47();
+        a1.disp();
+    }
+}
+
+
+
+
+----------------------------------------End------------------------------------------------
