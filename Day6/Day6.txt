@@ -1,0 +1,137 @@
+Q48=======================================
+abstract class Processor{
+	 double data ;
+	void showData() {
+		System.out.println("Data : "+data);
+	}
+	abstract void process();
+}
+
+class Factorial extends Processor{
+	void process() {
+		Scanner sc = new Scanner (System.in);
+		System.out.println("Enter the number :");
+		int num = sc.nextInt();
+		
+		int fact = 1 ;
+		for(int i = 1 ; i <= num ; i++) {
+			fact = fact * i ;
+		}
+		
+		data = fact ;
+	}
+}
+
+class Circle extends Processor{
+	void process() {
+		Scanner sc = new Scanner (System.in);
+		System.out.println("Enter the number :");
+		int r = sc.nextInt();
+		
+		double area = 3.14 * r * r;
+		
+		data = area ;
+		
+	}
+}
+
+
+
+public class Ques48 {
+
+	public static void main(String[] args) {
+		Processor f = new Factorial();
+		f.process();
+		f.showData();
+		
+		Processor c = new Circle();
+		c.process();
+		c.showData();
+
+	}
+
+}
+
+
+
+
+
+Q49========================================
+interface Taxable{
+	double salesTax = 0.07;
+	double incomeTax = 0.105;
+	//double totaltax;
+	void calcTax();
+	
+}
+
+class Emp implements Taxable{
+	int id ; 
+	String name ;
+	double salary;
+	Emp(int id , String name , double salary){
+		this.id = id ; 
+		this.name = name ;
+		this.salary = salary;
+	}
+	
+	
+	
+	void setSalary(double salary ) {
+		this.salary = salary;
+	}
+	
+	
+	public void calcTax() {
+		
+		double it = salary * incomeTax;
+		
+		
+		System.out.println("Id : "+id);
+		System.out.println("Name : "+name);
+		System.out.println("Salary : "+salary);
+		System.out.println("Tax is : " +it);
+	}
+}
+
+class Product implements Taxable{
+	int pid;
+	double price ; 
+	double quantity;
+    Product(int pid, double price, double quantity) {
+		this.pid = pid;
+		this.price = price;
+		this.quantity = quantity;
+	}
+    
+  
+	public void calcTax() {
+		
+		double st = price * salesTax;
+		
+		System.out.println("Product Id : "+pid);
+		System.out.println("Price : "+price);
+		System.out.println("Quantity : "+quantity);
+		System.out.println("Tax is : " +st);
+		
+	}
+	
+}
+
+
+
+
+public class Ques49 {
+
+	public static void main(String[] args) {
+		Emp e = new Emp(1,"shantanu",30000);
+		e.calcTax();
+		System.out.println("----------------------------------");
+		Product p = new Product(23,500,4);
+		p.calcTax();
+
+	}
+
+}
+
+-------------------------------------------------End-------------------------------------------------
